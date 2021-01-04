@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    // target latest version of ECMAScript
+    "target": "esnext",
+    // Process & infer types from .js files.
+    "allowJs": true,
+    // import non-ES modules as default imports
+    "esModuleInterop": true,
+    "strictNullChecks": false,
+    // support react (enable jsx in tsx)
+    "jsx": "react"
+  },
+  "include": [
+    "src"
+  ]
+}
