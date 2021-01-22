@@ -30,7 +30,7 @@ export const AdultValidator = ({min = 4, max = 120}) => {
         value={age}
         onChange={handleChange}
       />
-      {isValid ? null : <div role="alert">{getValidationError()}</div>}
+      {isValid ?  <div>You are grown up!</div> : <div role="alert">{getValidationError()}</div>}
     </div>
   );
 };
