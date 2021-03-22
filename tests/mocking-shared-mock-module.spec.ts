@@ -1,7 +1,8 @@
 import random from '../src/utils/random';
 import {greet, greet2} from '../src/greetings';
 
-// TODO mock random and config module
+jest.mock('../src/utils/random');
+jest.mock('../src/utils/config');
 
 describe('greetings with shared mocked module', () => {
 

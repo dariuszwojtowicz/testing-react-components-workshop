@@ -1,1 +1,4 @@
-// TODO define mocked module
+export default {
+  getRandomListElement: jest.fn(() => 'Hello')
+}
+
