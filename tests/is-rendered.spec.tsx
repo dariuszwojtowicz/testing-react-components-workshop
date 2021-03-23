@@ -6,13 +6,15 @@ import {AdultValidator} from '../src/AdultValidator';
 
 test('should show GROWN UP message and no VALIDATION message after entering valid value', () => {
   // given
-  const {queryByLabelText} = render(<AdultValidator />);
+  const {queryByLabelText, queryByRole, queryByText} = render(<AdultValidator />);
 
   // when
   user.type(queryByLabelText(/age/i), '20');
 
+  const validationMessage = queryByRole('alert');
+  const grownUpMessage = queryByText(/you are grown up/i);
+
   // then
-  expect(true).toBeFalsy();
-  // TODO validationMessage is not render
-  // TODO grownUpMessage is rendered
+  expect(validationMessage).not.toBeInTheDocument();
+  expect(grownUpMessage).toBeInTheDocument();
 });
