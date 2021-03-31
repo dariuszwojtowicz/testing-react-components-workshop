@@ -1,4 +1,4 @@
-import {renderHook} from '@testing-library/react-hooks';
+import {renderHook, act} from '@testing-library/react-hooks';
 import {useCounter} from '../src/utils/useCounter';
 
 test('should provide counter with inc and dec operators for default configuration', () => {
@@ -6,15 +6,26 @@ test('should provide counter with inc and dec operators for default configuratio
   const { result } = renderHook(useCounter);
 
   // when
-  // TODO counter value should be 0
-  // TODO something should happen here
+  expect(result.current.counter).toBe(0);
+  act(() => result.current.inc());
 
   // then
-  // TODO counter value should be 1
-  // TODO something should happen here
-  // TODO counter value should be 0
+  expect(result.current.counter).toBe(1);
+  act(() => result.current.dec());
+  expect(result.current.counter).toBe(0);
 });
 
 test('should provide counter with inc and dec operators for custom configuration', () => {
-  // TODO test with passed initialValue and step
+  // given
+  const { result } = renderHook(useCounter, { initialProps: { initialValue: 100, step: 10 } });
+
+  // when
+  expect(result.current.counter).toBe(100);
+  act(() => result.current.inc());
+
+  // then
+  expect(result.current.counter).toBe(110);
+  act(() => result.current.dec());
+  act(() => result.current.dec());
+  expect(result.current.counter).toBe(90);
 });
