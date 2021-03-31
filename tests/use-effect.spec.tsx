@@ -1,4 +1,5 @@
 import * as React from 'react';
+import user from '@testing-library/user-event';
 import {render} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import {Provider} from 'react-redux';
@@ -7,20 +8,24 @@ import {store} from '../src/redux/store';
 
 test('should display last operation info', () => {
   // given
-  const {queryByText} = render(
+  const {getByText} = render(
     <Provider store={store}>
       <ReduxCounter />
     </Provider>,
   );
 
   // when
+  const plusButton = getByText('+');
+  const minusButton = getByText('-');
+  user.click(plusButton);
 
   // then
-  expect(queryByText(/last operation: increment/i)).toBeInTheDocument();
+  expect(getByText(/last operation: increment/i)).toBeInTheDocument();
 
   // when
+  user.click(minusButton);
 
   // then
-  expect(queryByText(/last operation: decrement/i)).toBeInTheDocument();
+  expect(getByText(/last operation: decrement/i)).toBeInTheDocument();
 });
 
