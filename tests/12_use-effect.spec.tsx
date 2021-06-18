@@ -8,24 +8,20 @@ import {store} from '../src/redux/store';
 
 test('should display last operation info', () => {
   // given
-  const {getByText} = render(
+  const {queryByText} = render(
     <Provider store={store}>
       <ReduxCounter />
     </Provider>,
   );
 
   // when
-  const plusButton = getByText('+');
-  const minusButton = getByText('-');
-  user.click(plusButton);
 
   // then
-  expect(getByText(/last operation: increment/i)).toBeInTheDocument();
+  expect(queryByText(/last operation: increment/i)).toBeInTheDocument();
 
   // when
-  user.click(minusButton);
 
   // then
-  expect(getByText(/last operation: decrement/i)).toBeInTheDocument();
+  expect(queryByText(/last operation: decrement/i)).toBeInTheDocument();
 });
 

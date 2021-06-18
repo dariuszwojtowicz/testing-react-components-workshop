@@ -1,13 +1,7 @@
 import random from '../src/utils/random';
 import {greet, greet2} from '../src/greetings';
 
-jest.mock('../src/utils/config', () => ({
-  lang: 'pl'
-}));
-
-jest.mock('../src/utils/random', () => ({
-  getRandomListElement: jest.fn(() => 'Hello')
-}));
+// TODO set mocks for config and random modules
 
 describe('greetings', () => {
 

@@ -9,19 +9,18 @@ import {RoutedApp} from '../src/RoutedApp';
 test('should RoutedApp component render contact and info and allow user to navigate', () => {
   // given
   const history = createMemoryHistory({initialEntries: ['/info']});
-  const {queryByRole, queryByText} = render(
+  const {container} = render(
     <Router history={history}>
       <RoutedApp />
     </Router>,
   );
-  const initialHeading = queryByRole('heading');
-  expect(initialHeading).toHaveTextContent(/info/i);
+
+  // TODO check if Info header is displayed
+  expect(container.querySelector('h2')).toHaveTextContent(/info/i);
 
   // when
-  const contactMenuItem = queryByText(/contact/i);
-  user.click(contactMenuItem);
+  // TODO navigate to Contact page
 
   // then
-  const afterRedirectHeading = queryByRole('heading');
-  expect(afterRedirectHeading).toHaveTextContent(/contact/i);
+  // TODO check if Contact header is displayed
 });
