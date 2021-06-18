@@ -1,8 +1,8 @@
 import * as React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import user from '@testing-library/user-event'
-import {render} from '@testing-library/react';
+import {fireEvent, render} from '@testing-library/react';
 import {AdultValidator} from '../src/AdultValidator';
+import user from "@testing-library/user-event";
 
 test('should show TO YOUNG message after entering value smaller than min', () => {
   // given
@@ -10,7 +10,7 @@ test('should show TO YOUNG message after entering value smaller than min', () =>
 
   // when
   const input = queryByLabelText(/age/i)
-  user.type(input, '2');
+  fireEvent.change(input, {target: {value: '2'}})
 
   // then
   expect(queryByRole('alert')).toHaveTextContent(/are you really so young/i)
