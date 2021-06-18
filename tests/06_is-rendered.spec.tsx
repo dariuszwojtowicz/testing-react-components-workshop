@@ -13,6 +13,6 @@ test('should show GROWN UP message and no VALIDATION message after entering vali
 
   // then
   expect(true).toBeFalsy();  // <-- Remove this expect after setting you own
-  // TODO validationMessage is not render
-  // TODO grownUpMessage is rendered
+  // TODO validationMessage is not render (use toBeInTheDocument)
+  // TODO grownUpMessage is rendered (use toBeInTheDocument)
 });
